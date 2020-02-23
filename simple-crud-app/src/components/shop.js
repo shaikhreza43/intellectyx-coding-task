@@ -3,6 +3,7 @@ import axios from 'axios';
 import $ from 'jquery';
 
 
+
 class Shop extends React.Component{
     
     constructor(props){
@@ -12,10 +13,14 @@ class Shop extends React.Component{
             shopname:'',
             status:'',
             shopDetails:[]
+            
+           
         };
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
         this.OnChangeHandler = this.OnChangeHandler.bind(this);
-    }
+
+     }
+
 
 
     componentDidMount(){
@@ -112,20 +117,20 @@ class Shop extends React.Component{
                         </thead>
                         <tbody id="myTable">
                            {this.fetchShopDetails()}
+
+                        
                         </tbody>
                         </table>
-
+{/* 
                         <select className="float-left">
                         <option>10</option>    
                         <option>20</option>    
                         <option>100</option>    
-                        </select>
-
+                        </select> */}
+{/* 
                         <nav aria-label="Page navigation example" className="float-right">
-                        <ul className="pagination justify-content-center">
-                            <li className="page-item disabled">
-                            <a className="page-link" href="#" tabindex="-1">Previous</a>
-                            </li>
+                        <ul className="pagination">
+                           
                             <li className="page-item"><a className="page-link" href="#">1</a></li>
                             <li className="page-item"><a className="page-link" href="#">2</a></li>
                             <li className="page-item"><a className="page-link" href="#">3</a></li>
@@ -133,7 +138,7 @@ class Shop extends React.Component{
                             <a className="page-link" href="#">Next</a>
                             </li>
                         </ul>
-                        </nav>
+                        </nav> */}
 
                 </div>
 
