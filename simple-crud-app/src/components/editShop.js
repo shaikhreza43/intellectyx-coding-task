@@ -8,7 +8,7 @@ class EditShop extends Component {
         username: "",
         shopname: "",
         status: "",
-        users: []
+        shops: []
       };
 
     this.OnChangeHandler = this.OnChangeHandler.bind(this);
@@ -24,7 +24,7 @@ class EditShop extends Component {
           console.log(response.data);
         if (response.data.length > 0) {
 
-            
+            this.setState({shops:response.data});
               
             // this.setState({
             
@@ -34,7 +34,9 @@ class EditShop extends Component {
             //  users: response.data.map(user => user.username)
             //  });    
 
-            response.data.map(shop=>{
+          
+
+            this.state.shops.map((shop)=>{
                 this.setState({
                     username:shop.username,
                     shopname:shop.shopname,
@@ -42,6 +44,18 @@ class EditShop extends Component {
                    
                 });
             })
+
+            // response.data.map(shop=>{
+
+            //     console.log(shop);
+               
+            //     this.setState({
+            //         username:shop.username,
+            //         shopname:shop.shopname,
+            //         status:shop.status
+                   
+            //     });
+            // })
          
           
         }
@@ -71,9 +85,15 @@ class EditShop extends Component {
         "http://localhost:9000/shop/edit-shop/" + this.props.match.params.id,
         shop
       )
-      .then(res => console.log(res.data));
+      .then(
+          function(res){
+            console.log(res.data);
+            alert('Data Updated!');
+            window.location = '/';
+          }
+          ).catch(err=>console.log("Error"+err));
 
-    window.location = '/';
+   
   }
 
   render() {
