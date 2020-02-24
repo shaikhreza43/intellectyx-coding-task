@@ -14,6 +14,42 @@ router.route('/create-shop').post((req,res)=>{
     .catch(err=>{console.log(err)});
 });
 
+
+router.route('/edit-shop/:id').post((req,res)=>{
+    Shop.findById(req.params.id).then(
+        function(shop){
+            shop.username = req.body.username;
+            shop.shopname = req.body.shopname;
+            shop.status = req.body.status;
+
+            shop.save().then(
+                function(){
+                    res.json('Shop Data Updated');
+                }
+            ).catch(function(err){
+                res.status(400).json("Error"+err);
+            })
+        }
+    ).catch(
+        function(err){
+            alert('Shop Not Found');
+            res.status(400).json("Error"+err);
+        }
+    )
+
+});
+
+
+router.route('/:id').delete((req,resp)=>{
+    Shop.findByIdAndDelete(req.params.id)
+    .then(function(){
+        resp.json('Shop Data Deleted!');
+    })
+    .catch(function(err){
+        resp.status(400).json('Error '+err);
+    });
+});
+
 router.route('/getAllShops').get((req,res)=>{
     
     Shop.find()

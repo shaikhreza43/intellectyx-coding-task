@@ -4,6 +4,8 @@ import Shop from './components/shop';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Pagination from './components/pagination';
 import axios from 'axios';
+import EditShop from './components/editShop';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 function App() {
 
@@ -40,8 +42,13 @@ function App() {
      <h3>Simple Shop App</h3>
     <hr></hr>
     <div className="container">
+    <Router>
       <Shop shops={currentData} loading={loading}/>
       <Pagination dataPerPage={dataPerPage} totalData={shops.length} paginate={paginate}/>
+
+    
+      <Route path="/edit-shop/:id" component={EditShop}></Route>
+      </Router>
       </div>
     </div>
   );
