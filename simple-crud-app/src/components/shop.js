@@ -61,7 +61,7 @@ class Shop extends React.Component {
       console.error('Username cannot be empty');
       alert('Username Shouldn\'t be empty');
     }
-    else if(shop.username.length<2){
+    else if(shop.username.length<5){
       console.error('Username Should be of minimum 5 character long');
       alert('Username Should be of minimum 5 character long');
     }
@@ -69,7 +69,7 @@ class Shop extends React.Component {
       console.error('Shopname cannot be empty');
       alert('Shopname Shouldn\'t be empty');
     }
-    else if(shop.shopname.length<2){
+    else if(shop.shopname.length<5){
       console.error('Shopname Should be of minimum 5 character long');
       alert('Shopname Should be of minimum 5 character long');
     }
@@ -77,7 +77,7 @@ class Shop extends React.Component {
       console.error('Status cannot be empty');
       alert('Status Shouldn\'t be empty');
     }
-    else if(shop.status.length<2){
+    else if(shop.status.length<5){
       console.error('Status Should be of minimum 5 character long');
       alert('Status Should be of minimum 5 character long');
     }
