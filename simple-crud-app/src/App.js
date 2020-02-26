@@ -5,7 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Pagination from './components/pagination';
 import axios from 'axios';
 import EditShop from './components/editShop';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route,Switch} from 'react-router-dom';
+// import ErrorHandler from './components/errorHandler';
+import PageNotFound from './components/pageNotFound';
 
 function App() {
 
@@ -14,6 +16,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [dataPerPage] = useState(5);
+  // const [error,setError] = useState({hasError:false})
 
   useEffect(() => {
     const fetchShops = async () => {
@@ -43,11 +46,16 @@ function App() {
     <hr></hr>
     <div className="container">
     <Router>
-      <Shop shops={currentData} loading={loading}/>
-      <Pagination dataPerPage={dataPerPage} totalData={shops.length} paginate={paginate}/>
+    <Shop shops={currentData} loading={loading}/>
+    <Pagination dataPerPage={dataPerPage} totalData={shops.length} paginate={paginate}/>
 
-    
-      <Route path="/edit-shop/:id" component={EditShop}></Route>
+      <Switch>
+        <Route exact path="/"></Route>
+       <Route exact path="/edit-shop/:id" component={EditShop}></Route>
+       <Route component={PageNotFound}></Route>
+      </Switch>
+      
+
       </Router>
       </div>
     </div>

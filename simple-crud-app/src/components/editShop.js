@@ -78,9 +78,34 @@ class EditShop extends Component {
       status: this.state.status
     };
 
-    console.log(shop);
+    if(shop.username===''||shop.username===undefined||shop.username===null){
+      console.error('Username cannot be empty');
+      alert('Username Shouldn\'t be empty');
+    }
+    else if(shop.username.length<2){
+      console.error('Username Should be of minimum 5 character long');
+      alert('Username Should be of minimum 5 character long');
+    }
+    else if(shop.shopname===''||shop.shopname===undefined||shop.shopname===null){
+      console.error('Shopname cannot be empty');
+      alert('Shopname Shouldn\'t be empty');
+    }
+    else if(shop.shopname.length<2){
+      console.error('Shopname Should be of minimum 5 character long');
+      alert('Shopname Should be of minimum 5 character long');
+    }
+    else if(shop.status===''||shop.status===undefined||shop.status===null){
+      console.error('Status cannot be empty');
+      alert('Status Shouldn\'t be empty');
+    }
+    else if(shop.status.length<2){
+      console.error('Status Should be of minimum 5 character long');
+      alert('Status Should be of minimum 5 character long');
+    }
 
-    axios
+
+    else{
+      axios
       .post(
         "http://localhost:9000/shop/edit-shop/" + this.props.match.params.id,
         shop
@@ -92,6 +117,9 @@ class EditShop extends Component {
             window.location = '/';
           }
           ).catch(err=>console.log("Error"+err));
+    }
+
+   
 
    
   }
